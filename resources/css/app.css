@@ -1,11 +1,350 @@
-@import 'tailwindcss';
+@import 'bootstrap';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    box-shadow: 0 0 5px 2px white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    max-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 0 10px; */
+    font-size: clamp(0.6rem, 4vw, 1rem);
+    background-color: rgb(46, 46, 46);
+    color: #ffffff;
+}
+
+.header img {
+    height: 100%;
+    min-height: 40px;
+}
+
+.header-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.header-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    color: white;
+}
+
+.header-nav a:hover {
+    border-bottom: 2px solid white;
+    background-color: rgba(61, 61, 61, 0.719);
+}
+
+.exit:hover{
+    border-color: red !important;
+    color: red !important;
+}
+
+@media (max-width: 600px) {
+    .header {
+        justify-content: center;
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
+body {
+    height: 100vb;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    padding-top: 150px;
+    background-color: rgb(53, 53, 53);
+}
+
+a {
+    color: rgb(0, 153, 255);
+    text-decoration: none;
+}
+
+.flash {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.flash p {
+    margin: 0;
+}
+
+.err {
+    background-color: rgb(221, 82, 82);
+}
+
+.ok {
+    background-color: rgb(33, 167, 33);
+}
+
+main {
+    box-sizing: border-box;
+    /* border: 1px solid; */
+    width: min(1100px, 100%);
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content-form {
+    box-shadow: 0 0 10px 2px white;
+    border-radius: 25px;
+    color: white;
+    height: fit-content;
+    width: min(400px, 100%);
+    padding: 10px;
+    background-color: rgba(32, 32, 32, 0.541);
+}
+
+.content-form form {
+    font-size: clamp(0.8rem, 5vw, 1.2rem);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.content-form form label {
+    width: 100%;
+}
+
+.content-form form input:not(input[type="radio"]) {
+    width: 100%;
+    height: 40px;
+}
+
+.content-form form input,
+.content-form form button {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.content-form form button {
+    background-color: rgb(63, 63, 63);
+    color: white;
+    padding: 10px;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.content-form form button:hover {
+    box-shadow: 0 0 5px 2px white;
+    background-color: rgb(82, 82, 82);
+}
+
+.content-form form input:focus,
+.content-form form button:focus {
+    outline: 1px solid;
+    box-shadow: 0 0 5px 2px white;
+}
+
+.content-form form textarea {
+    width: 100%;
+    min-height: 50px;
+    height: 200px;
+    max-height: 250px;
+}
+
+.info-block {
+    width: min(600px, 100%);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    border-radius: 15px;
+    box-shadow: 0 0 5px 2px white;
+    font-size: clamp(0.6rem, 4vw, 1rem);
+    padding: 10px;
+}
+
+.info-block form select,
+.info-block form button {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.info-block form button {
+    background-color: rgb(63, 63, 63);
+    color: white;
+    padding: 10px;
+    width: fit-content;
+
+    max-width: 100%;
+}
+
+.info-block form button:hover {
+    box-shadow: 0 0 5px 2px white;
+    background-color: rgb(82, 82, 82);
+}
+
+.info-block form select:focus,
+.info-block form button:focus {
+    outline: 1px solid;
+    box-shadow: 0 0 5px 2px white;
+}
+
+.info-block .block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    border-radius: 15px;
+}
+
+.info-block p {
+    margin: 10px;
+    width: 266px;
+    min-width: fit-content;
+}
+
+
+/* slider */
+
+.slider-conteiner {
+    width: min(600px,100%);
+    position: relative;
+}
+
+
+.slide-btn{
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30% 5px;
+}
+
+.left,
+.right {
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.466);
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.left:hover,
+.right:hover {
+    transform: scale(1.10);
+}
+.slide {
+    transition: all 0.2s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 390px;
+    border-radius: 15px;
+}
+
+
+.on {
+    opacity: 1;
+}
+
+@media (max-width: 700px) {
+    /* .slider-conteiner {
+        border: 1px solid;
+        height: 250px;
+        width: 400px;
+
+    } */
+}
+
+@media (max-width: 400px) {
+    /* .slider-conteiner {
+        border: 1px solid;
+        height: 150px;
+        width: 200px;
+
+    } */
+
+    .left,
+    .right {
+        height: 20px;
+        width: 20px;
+        font-size: 18px;
+    }
+}
+
+
+.page-item.active .page-link {
+    background-color: #585858;
+    border: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 0 5px 1px white;
+}
+
+.page-item.disabled .page-link {
+    background-color: #585858;
+    border: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 0 5px 1px white;
+}
+
+.page-link {
+    background-color: #202020;
+    color: white;
+    font-size: clamp(0.5rem, 2vw, 1rem);
+}
+
+.page-link:hover {
+    color: white;
+    background-color: #585858;
+    border: 1px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 0 5px 1px white;
 }

@@ -32,8 +32,24 @@
             <input type="password" name="password" id="password" placeholder="Пароль">
             <label for="password_confirmation">Повтор пароля</label>
             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Повтор пароля">
+            <label for="seePass">
+                <span>Показать пароль</span>
+                <input type="checkbox" id="seePass">
+            </label>
             <p>Уже зарегистрированы? <a href="{{ route('log') }}">Вход</a></p>
             <button type="submit">Зарегистрироваться</button>
         </form>
     </div>
+    <script src="{{ asset('js/jquery-4.0.0.js') }}"></script>
+    <script>
+        $('#seePass').on('click', function() {
+            if ($(this).prop('checked')) {
+                $('#password').attr('type', 'text')
+                $('#password_confirmation').attr('type', 'text')
+            } else {
+                $('#password').attr('type', 'password')
+                $('#password_confirmation').attr('type', 'password')
+            }
+        })
+    </script>
 @endsection

@@ -12,3 +12,4 @@ Route::get('/reg', [BasicController::class, 'reg'])->name('reg');
 
 Route::post('/log', [FormController::class, 'log'])->name('log.form');
 Route::post('/reg', [FormController::class, 'reg'])->name('reg.form');
+Route::post('/', [FormController::class, 'linkCut'])->name('link.form');

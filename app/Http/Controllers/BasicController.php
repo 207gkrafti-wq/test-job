@@ -14,7 +14,8 @@ class BasicController extends Controller
         return view('layouts.home');
     }
 
-        public function loguot()
+
+    public function loguot()
     {
         session()->flush();
 
