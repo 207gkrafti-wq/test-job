@@ -11,6 +11,10 @@
     padding: 0;
 }
 
+h2{
+    color: white;
+    padding-bottom: 25px;
+}
 .header {
     box-shadow: 0 0 5px 2px white;
     position: fixed;
@@ -26,9 +30,14 @@
     font-size: clamp(0.6rem, 4vw, 1rem);
     background-color: rgb(46, 46, 46);
     color: #ffffff;
+    z-index: 999;
+}
+.header .logo{
+    height: 100%;
+    min-height: 40px;
 }
 
-.header img {
+.header .logo img {
     height: 100%;
     min-height: 40px;
 }
@@ -54,11 +63,17 @@
 .header-nav a:hover {
     border-bottom: 2px solid white;
     background-color: rgba(61, 61, 61, 0.719);
+
 }
 
-.exit:hover{
+.exit:hover {
     border-color: red !important;
     color: red !important;
+}
+
+.exit img {
+    height: 25px;
+    width: 25px;
 }
 
 @media (max-width: 600px) {
@@ -67,6 +82,11 @@
         flex-direction: column;
         padding: 0;
     }
+
+    .header-nav {
+        width: 100%;
+    }
+
 }
 
 body {
@@ -126,7 +146,9 @@ main {
     background-color: rgba(32, 32, 32, 0.541);
 }
 
-.content-form form {
+.content-form form,
+.content-form .copy {
+    padding-bottom: 20px;
     font-size: clamp(0.8rem, 5vw, 1.2rem);
     width: 100%;
     height: 100%;
@@ -146,14 +168,17 @@ main {
 }
 
 .content-form form input,
-.content-form form button {
+.content-form form button,
+.content-form .copy input,
+.content-form .copy button {
     border: none;
     outline: none;
     padding: 5px;
     border-radius: 10px;
 }
 
-.content-form form button {
+.content-form form button,
+.content-form .copy button {
     background-color: rgb(63, 63, 63);
     color: white;
     padding: 10px;
@@ -161,13 +186,16 @@ main {
     max-width: 100%;
 }
 
-.content-form form button:hover {
+.content-form form button:hover,
+.content-form .copy button:hover {
     box-shadow: 0 0 5px 2px white;
     background-color: rgb(82, 82, 82);
 }
 
 .content-form form input:focus,
-.content-form form button:focus {
+.content-form form button:focus,
+.content-form .copy input:focus,
+.content-form .copy button:focus {
     outline: 1px solid;
     box-shadow: 0 0 5px 2px white;
 }
@@ -240,90 +268,6 @@ main {
 }
 
 
-/* slider */
-
-.slider-conteiner {
-    width: min(600px,100%);
-    position: relative;
-}
-
-
-.slide-btn{
-    z-index: 2;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 30% 5px;
-}
-
-.left,
-.right {
-    transition: all 0.2s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.466);
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    color: white;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-
-}
-
-.left:hover,
-.right:hover {
-    transform: scale(1.10);
-}
-.slide {
-    transition: all 0.2s ease;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
-
-.slide img {
-    width: 100%;
-    height: auto;
-    max-height: 390px;
-    border-radius: 15px;
-}
-
-
-.on {
-    opacity: 1;
-}
-
-@media (max-width: 700px) {
-    /* .slider-conteiner {
-        border: 1px solid;
-        height: 250px;
-        width: 400px;
-
-    } */
-}
-
-@media (max-width: 400px) {
-    /* .slider-conteiner {
-        border: 1px solid;
-        height: 150px;
-        width: 200px;
-
-    } */
-
-    .left,
-    .right {
-        height: 20px;
-        width: 20px;
-        font-size: 18px;
-    }
-}
-
-
 .page-item.active .page-link {
     background-color: #585858;
     border: 1px solid rgba(255, 255, 255, 0);
@@ -347,4 +291,49 @@ main {
     background-color: #585858;
     border: 1px solid rgba(255, 255, 255, 0);
     box-shadow: 0 0 5px 1px white;
+}
+
+
+.copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row !important;
+    width: 100%;
+
+}
+
+.copy input {
+    width: 90% !important;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.copy-btn img {
+    width: 200%;
+    height: 200%;
+}
+
+.del-url:hover{
+    box-shadow: 0 0 5px 2px rgb(255, 22, 22) !important;
+    color: rgb(255, 22, 22) !important;
+}
+
+.see-pass{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+    padding: 0 10px;
+}
+.see-pass input{
+
+    width: 20px !important;
+    height: 20px !important;
+
 }

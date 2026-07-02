@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('info_links', function (Blueprint $table) {
             $table->id();
             $table->text('ip');
-            $table->dateTime('data_time');
-            $table->foreignId('links_id')
+            $table->dateTime('date_time');
+            $table->foreignId('link_id')
                 ->constrained('links')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

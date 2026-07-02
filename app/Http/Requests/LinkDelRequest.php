@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Link;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CutRequest extends FormRequest
+class LinkDelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +25,21 @@ class CutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'old_url' => 'required|url'
+            'link_del' => [
+                'required',
+                'exists:links,id',
+                Rule::exists('links', 'id')->where(function($query){
+                    $query->where('user_id', auth()->id());
+                }),
+
+            ]
         ];
     }
-
     public function messages(): array
     {
         return [
-            'old_url.required' => 'Для начала заполните поле',
-            'old_url.url' => 'Не является ссылкой',
-            // 'old_url.active_url' => 'Ссылка нерабочая',
+            'link_del.required' => 'Что-то пошло не так :(',
+            'link_del.exists' => 'Ссылки не существует или она не принадлежит вам!',
         ];
     }
 }

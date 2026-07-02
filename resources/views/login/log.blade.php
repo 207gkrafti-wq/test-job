@@ -39,7 +39,7 @@
                 <span>Пароль</span>
                 <input type="password" name="password" id="password" placeholder="Пароль">
             </label>
-            <label for="seePass">
+            <label for="seePass" class="see-pass">
                 <span>Показать пароль</span>
                 <input type="checkbox" id="seePass" >
             </label>

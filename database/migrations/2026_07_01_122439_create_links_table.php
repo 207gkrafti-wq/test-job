@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->longText('old_url');
             $table->longText('new_url');
-            $table->foreignId('users_id')
+            $table->bigInteger('count')->default(0);
+            $table->foreignId('user_id')
                 ->constrained('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

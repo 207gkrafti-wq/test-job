@@ -43,7 +43,7 @@ class RegRequest extends FormRequest
             'password.regex' => 'Допустимые символы для поля Пароль a-z 0-9',
 
             'login.unique' => 'Логин занят',
-            'password.confirmed' => 'Пороли не совпадают',
+            'password.confirmed' => 'Пароли не совпадают',
             'email.email' => 'Некорректный Email',
         ];
     }
