@@ -1,5 +1,6 @@
 @echo off
-cd "test"
-start /b php composer.phar install
-start /b npm install
-start /b npm install bootstrap
+cd test
+php composer.phar install
+npm install
+npm install bootstrap
+pause
