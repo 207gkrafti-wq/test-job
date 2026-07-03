@@ -5,6 +5,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\VisitLinkController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/login', [BasicController::class, 'log'])->name('login');
 Route::get('/reg', [BasicController::class, 'reg'])->name('reg');
 Route::post('/log', [FormController::class, 'log'])->name('log.form');
