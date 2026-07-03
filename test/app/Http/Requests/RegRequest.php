@@ -23,7 +23,7 @@ class RegRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "login" => "min:6|regex:/^[a-z\d]+$/ui|unique:users,login|required",
+            "login" => "min:5|regex:/^[a-z\d_-]+$/ui|unique:users,login|required",
             "password" => "min:8|regex:/^[a-z\d]+$/ui|required|confirmed",
             "email" => "required|email",
 
@@ -36,7 +36,7 @@ class RegRequest extends FormRequest
             'password.required' => 'Поле Пароль обязательно для ввода',
             'email.required' => 'Поле Email обязательно для ввода',
 
-            'login.min' => 'Мин. значение поля Логин: 6',
+            'login.min' => 'Мин. значение поля Логин: 5',
             'password.min' => 'Мин. значение поля Пароль: 8',
 
             'login.regex' => 'Допустимые символы для поля Логин a-z 0-9',

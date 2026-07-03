@@ -23,7 +23,7 @@ class LogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "login" => "regex:/^[a-z\d]+$/ui|exists:users,login|required",
+            "login" => "regex:/^[a-z\d_-]+$/ui|exists:users,login|required",
             "password" => "regex:/^[a-z\d]+$/ui|required",
         ];
     }

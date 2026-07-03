@@ -26,19 +26,36 @@
             <button type="submit">Сократить</button>
         </form>
         <div class="copy">
-            <input type="text" id="copy-inp" value={{ session('flashOk') ?? '' }}>
+            <input type="text" id="copy-inp" value="{{ session('flashOk') ?? '' }}">
             <button title="скопировать" class="copy-btn" id="copy-btn" onclick="copyLink()"><img src="{{ asset('img/copy-3-svgrepo-com.svg') }}" alt="copy"></button>
         </div>
     </div>
     <script src="{{ asset('js/jquery-4.0.0.js') }}"></script>
     <script>
-        async function copyLink(){
-            try {
-                await navigator.clipboard.writeText($('#copy-inp').val())
-                alert('Скопировано')
-            } catch (error) {
+        function copyLink() {
+        const $inp = $('#copy-inp');
 
+        $inp.select();
+        $inp[0].setSelectionRange(0, 99999);
+
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                alert('Скопировано');
+            } else {
+                console.error('Не удалось скопировать');
+            }
+        } catch (err) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText($inp.val())
+                    .then(() => alert('Скопировано'))
+                    .catch(e => console.error(e));
+            } else {
+                console.error('Копирование не поддерживается этим браузером на HTTP');
             }
         }
+
+        $inp.blur();
+    }
     </script>
 @endsection
